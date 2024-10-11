@@ -2,6 +2,7 @@
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #ccc;
 }
 
 .App {
@@ -104,3 +105,6 @@ body {
     grid-template-columns: repeat(4, 1fr); /* Three columns for buttons */
     gap: 10px; /* Space between buttons */
 }
+
+
+/****************** numberical buttons******************** */
