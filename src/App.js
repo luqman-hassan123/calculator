@@ -1,14 +1,21 @@
 import './App.css';
 import './calculator.css';
 import Card from './components/card/Card';
+import Input from './components/Input';
 import Output from './components/output/Output';
-import Buttons from './components/buttons/Buttons';
+import Button from './components/Button';
 import { useState } from 'react';
 
 function App() {
   const [expression, setExpression] = useState(''); // Track the entire expression
   const [currentValue, setCurrentValue] = useState('0'); // Track current number being entered
   const [isResultShown, setIsResultShown] = useState(false); // Flag to check if result is shown
+  const [InputValue, setInputValue] = useState('');
+
+
+  const handleInputChnage = (e) => {
+    setInputValue(e.target.value);
+  }
 
   const handleClick = (value) => {
     if (value === 'C') {
@@ -43,7 +50,22 @@ function App() {
         setExpression((prev) => prev + value.toString());
       }
 
-      // Update current value if a number is clicked
+      /**
+       * 
+       * 
+       *    {items.map((item) => (
+        <button
+          key={item}
+          className={className}
+          onClick={() => onButtonClick(item)}
+        >
+          {item}
+        </button>
+      ))}
+       * 
+       */
+
+      // Update current value if a number is clicked 
       if (!isNaN(value)) {
         setCurrentValue((prev) => (prev === '0' || isResultShown ? value.toString() : prev + value));
       }
@@ -58,10 +80,39 @@ function App() {
     <div className="App">
       <h1 className='heading'>Calculator</h1>
       <Card>
-        <Output value={expression} />
-        <Buttons items={numbers} className="btn" onButtonClick={handleClick} />
-        <Buttons items={operators} className="btn operator" onButtonClick={handleClick} />
+        <Input type="text" value={expression} className='input' handlClick={handleInputChnage}/>
+        {/* <Output value={expression} /> */}
+
+      <div className="box">
+        {numbers.map((item) => (
+        <Button
+          key={item}
+          title={item}
+          onButtonClick={() => handleClick(item)} 
+          classes="btn"
+          >
+          {item}
+          
+        </Button>
+      ))}
+      </div>
+
+      <div className="box">
+      {operators.map((item) => (
+        <Button
+          key={item}
+          title={item}
+          onButtonClick={() => handleClick(item)} 
+          classes="btn operator"
+          >
+          {item}
+        </Button>
+      ))}
+      </div>
+        {/* <Buttons items={numbers} className="btn" onButtonClick={handleClick} /> */}
+        {/* <Buttons items={operators} className="btn operator" onButtonClick={handleClick} /> */}
       </Card>
+        <Button title="Close" classes="btn" onButtonClick={()=>{}}/>
     </div>
   );
 }
