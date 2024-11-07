@@ -52,20 +52,7 @@ function App() {
         setExpression((prev) => prev + value.toString());
       }
 
-      /**
-       * wrong way of importing buttons through loop it was tightly touple
-       * 
-       *    {items.map((item) => (
-        <button
-          key={item}
-          className={className}
-          onClick={() => onButtonClick(item)}
-        >
-          {item}
-        </button>
-      ))}
-       * 
-       */
+    
 
       // Update current value if a number is clicked
       if (!isNaN(value)) {
@@ -89,7 +76,7 @@ function App() {
           className="input"
           handlClick={handleInputChnage}
         />
-        {/* <Output value={expression} /> */}
+ 
 
         {/* number buttons  */}
         <div className="box">
@@ -118,11 +105,9 @@ function App() {
             </Button>
           ))}
         </div>
-        {/* old buttons  */}
-        {/* <Buttons items={numbers} className="btn" onButtonClick={handleClick} /> */}
-        {/* <Buttons items={operators} className="btn operator" onButtonClick={handleClick} /> */}
+      
       </Card>
-      {/* <Button title="Close" classes="btn" onButtonClick={()=>{}}/> */}
+  
     </div>
   );
 }
